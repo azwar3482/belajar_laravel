@@ -6,45 +6,46 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
-          {{-- @if (Auth::check() && Auth::user()->level == 'admin') --}}
+          @if (Auth::check() && Auth::user()->level == 'admin')
+
           <li class="nav-item px-2">
             <a href="/album" class="nav-link active">Album</a>
           </li>
-          {{-- @endif
-          @if (Auth::check()) --}}
+          @endif
+          @if (Auth::check())
           <li class="nav-item px-2">
-            <a href="" class="nav-link active">Galeri Foto</a>
+            <a href="/galeri" class="nav-link active">Galeri Foto</a>
           </li>
-          {{-- @endif
-          @if (Auth::check() && Auth::user()->level == 'admin') --}}
+          @endif
+          @if (Auth::check() && Auth::user()->level == 'admin')
           <li class="nav-item px-2">
-            <a href="" class="nav-link active">Manajemen User</a>
+            <a href="/user" class="nav-link active">Manajemen User</a>
           </li>
-          {{-- @endif --}}
+          @endif
         </ul>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown mr-3">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-user"></i> Hi,adin
-              {{-- <i class="fa fa-user"></i> Hi, {{ Auth::user()->name }} --}}
+              {{-- <i class="fa fa-user"></i> Hi,adin --}}
+              <i class="fa fa-user"></i> Hi, {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu">
-              <a href="profile.html" class="dropdown-item">
-                <i class="fa fa-sing-out-alt"></i>logout
-              </a>
-               {{-- <a class="dropdown-item" href="{{ route('logout') }}"
+              {{-- <a href="profile.html" class="dropdown-item"> --}}
+                {{-- <i class="fa fa-sing-out-alt"></i>logout
+              </a> --}}
+               <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit();">
+                  document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
-                </a> --}}
-                {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                </a> 
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
-                </form> --}}
+                </form>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-<br>
+{{-- <br> --}}

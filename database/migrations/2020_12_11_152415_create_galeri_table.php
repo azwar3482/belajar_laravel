@@ -15,6 +15,7 @@ class CreateGaleriTable extends Migration
     {
         Schema::create('galeri', function (Blueprint $table) {
             $table->id();
+            // $table->id_user();
             $table->string('nama_galeri');
             $table->text('keterangan');
             $table->string('foto');

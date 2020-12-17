@@ -11,6 +11,9 @@ use File;
 
 class AlbumController extends Controller
 {
+    public function __construct(){
+        $this->middleware('admin');
+    }
     public function index(){
         $no = 0;
         $album = Album::all();
@@ -34,6 +37,7 @@ class AlbumController extends Controller
         $gambar = $request->gambar;
         $namafile = time().'.'.$gambar->getClientOriginalExtension();
         $gambar->move('images/',$namafile);
+        
         $album->gambar = $namafile;
         $album->save();
         return redirect('/album')->with('pesan','data album berhasil disimpan');
@@ -54,10 +58,11 @@ class AlbumController extends Controller
         $album = Album::find($id);
         if ($request->has('gambar')){
             $album->nama_album = $request->nama_album;
-            $album->album_seo = Str::slug($request->album_seo);
+            $album->album_seo = Str::slug($request->album_album);
 
             $gambar = $request->gambar;
             $namafile = time().'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('images/', $namafile);
             $album->gambar = $namafile;
         }
         else{
